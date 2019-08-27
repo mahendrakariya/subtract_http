@@ -3,4 +3,4 @@ build:
 docker-build:
 	docker build -t subtract_http .
 docker-run:
-	docker run -p 3003:4567 subtract_http
+	docker run -p 3003:4567 --network host subtract_http
