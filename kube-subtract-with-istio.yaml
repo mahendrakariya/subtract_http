@@ -171,7 +171,6 @@ spec:
   ports:
   - protocol: TCP
     port: 4567
+    name: "http"
     targetPort: 4567
-
-
 ---
