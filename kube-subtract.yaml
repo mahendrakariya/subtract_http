@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: subtract-deployment
+  labels:
+    app: subtract
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subtract
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: subtract
+        version: v1
+    spec:
+      containers:
+      - name: subtract-http-cont
+        image: mahendrakariya/subtract_http:0.0.1
+        ports:
+        - containerPort: 4567
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: subtract-svc
+spec:
+  selector:
+    app: subtract
+  ports:
+  - protocol: TCP
+    port: 4567
+    targetPort: 4567
+
+
